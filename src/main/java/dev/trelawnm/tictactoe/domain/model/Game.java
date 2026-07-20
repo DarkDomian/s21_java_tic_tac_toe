@@ -2,26 +2,44 @@ package dev.trelawnm.tictactoe.domain.model;
 
 import java.util.UUID;
 
+import dev.trelawnm.tictactoe.exceptions.IllegalMoveException;
+
 /**
  * An Entity
  */
 public class Game { // Entity
     private Board board;
-    public final UUID uuid;
+    private Player currentPlayer;
+    private final UUID uuid;
 
-    // store: current player, 
-
-
-    public Game() {
+    public Game(UUID id) {
         this.board = Board.empty();
-        this.uuid = UUID.randomUUID(); // TODO: will be given to the constructor from service / factoria
+        this.uuid = id;
+        this.currentPlayer = Player.O;
     }
 
     public Board getBoard() {
-        return this.board; // TODO: make method .copy() in GameBoard class and call it
+        return new Board(board.grid());
     }
 
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public UUID getId() {
+        return new UUID(uuid);
+    }
+
+    public void makeMove(Move move) {
+        try {
+            board.placeMark(move, currentPlayer);
+            currentPlayer = (currentPlayer == Player.X) ? Player.O : Player.X;
+        } catch (IllegalMoveException e) {
+
+        }
     }
 }

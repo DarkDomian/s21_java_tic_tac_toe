@@ -11,8 +11,8 @@ public class GameService implements GameServiceInterface {
     @Override
     public Game nextMove(Game game) {
         // TODO: return given game with updated board
-        Move aiMove = MinimaxEngine.findBestMove(game.getBoard(), game.currentPlayer());
-        Board some = game.getBoard().placeMark(aiMove, game.currentPlayer());
+        Move aiMove = MinimaxEngine.findBestMove(game.getBoard(), game.getCurrentPlayer());
+        Board some = game.makeMove(aiMove);
         game.setBoard(some);
         return game;
     }
@@ -41,7 +41,6 @@ public class GameService implements GameServiceInterface {
         if (Math.abs(sumOnBoard) > 1 || numOfChanges != 1)
             return false;
 
-        this.Board = currBoard; // TODO: this is side effect... probably shoudn't be there
         return true;
     }
 

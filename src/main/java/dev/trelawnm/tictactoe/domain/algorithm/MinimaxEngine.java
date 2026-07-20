@@ -9,7 +9,7 @@ import dev.trelawnm.tictactoe.domain.model.Player;
 
 public class MinimaxEngine {
 
-    static Move findBestMove(Board board, Player currPlayer) throws IllegalMoveException {
+    public static Move findBestMove(Board board, Player currPlayer) throws IllegalMoveException {
         int bestVal = Integer.MIN_VALUE;
         Move bestMove = null;
 
@@ -52,11 +52,7 @@ public class MinimaxEngine {
         if (isMax) {
             int best = Integer.MIN_VALUE;
 
-            // Traverse availavle cells
-            List<Move> avblMoves = board.getAvailableMoves();
-
-            for (Move move : avblMoves) {
-                // TODO: need to understood witch move now
+            for (Move move : board.getAvailableMoves()) {
                 Board newBoard = board.placeMark(move, Player.X);
 
                 best = Math.max(best, minimax(newBoard, depth + 1, !isMax));
