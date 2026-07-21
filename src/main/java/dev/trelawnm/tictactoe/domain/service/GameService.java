@@ -1,5 +1,7 @@
 package dev.trelawnm.tictactoe.domain.service;
 
+import java.util.UUID:
+
 import dev.trelawnm.tictactoe.domain.model.Game;
 import dev.trelawnm.tictactoe.domain.model.Move;
 import dev.trelawnm.tictactoe.domain.model.Board;
@@ -7,6 +9,21 @@ import dev.trelawnm.tictactoe.domain.model.Board;
 import dev.trelawnm.tictactoe.domain.algorithm.MinimaxEngine;
 
 public class GameService implements GameServiceInterface {
+    private final GameRepository storage;
+
+    public GameService(GameRepository repo) {
+        this.storage = repo;
+    }
+
+    @Override
+    public Game getGame(UUID id) {
+        return storage.findById(id);
+    }
+
+    @Override
+    public void saveGame(Game game) {
+        storage.save(game);
+    }
 
     @Override
     public Game nextMove(Game game) {

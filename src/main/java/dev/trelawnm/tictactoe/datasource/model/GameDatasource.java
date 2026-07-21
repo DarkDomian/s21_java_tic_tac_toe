@@ -1,6 +1,6 @@
 package dev.trelawnm.tictactoe.datasource.model;
 
-import java.util.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.UUID;
 
 public class GameDatasource {
@@ -11,6 +11,6 @@ public class GameDatasource {
     }
 
     public void save(GameDto toSave) {
-        repo.put(toSave.id, toSave);
+        repo.put(toSave.id(), toSave);
     }
 }

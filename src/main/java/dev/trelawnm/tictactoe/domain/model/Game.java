@@ -12,10 +12,10 @@ public class Game { // Entity
     private Player currentPlayer;
     private final UUID uuid;
 
-    public Game(UUID id) {
-        this.board = Board.empty();
+    public Game(UUID id, Board board, Player cp) {
+        this.board = board;
         this.uuid = id;
-        this.currentPlayer = Player.O;
+        this.currentPlayer = cp;
     }
 
     public Board getBoard() {
@@ -34,10 +34,10 @@ public class Game { // Entity
         return new UUID(uuid);
     }
 
-    public void makeMove(Move move) {
+    public Board makeMove(Move move) {
         try {
-            board.placeMark(move, currentPlayer);
             currentPlayer = (currentPlayer == Player.X) ? Player.O : Player.X;
+            return board.placeMark(move, currentPlayer);
         } catch (IllegalMoveException e) {
 
         }

@@ -1,10 +1,15 @@
 package dev.trelawnm.tictactoe.domain.service;
 
+import java.util.UUID;
+
 import dev.trelawnm.tictactoe.domain.model.Board;
 import dev.trelawnm.tictactoe.domain.model.Game;
 
 interface GameServiceInterface {
-    public Game nextMove(Game game);
-    public boolean validateBoard(Board currBoard);
-    public boolean gameEnded(Game game);
+    Game nextMove(Game game);
+    boolean validateBoard(Board currBoard);
+    boolean gameEnded(Game game);
+
+    Game getGame(UUID id);
+    void saveGame(Game game);
 }

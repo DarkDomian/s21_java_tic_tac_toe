@@ -1,6 +1,12 @@
 package dev.trelawnm.tictactoe.datasource.mapper;
 
 import java.util.List;
+import java.util.ArrayList;
+
+import dev.trelawnm.tictactoe.domain.model.Board;
+import dev.trelawnm.tictactoe.domain.model.Game;
+
+import dev.trelawnm.tictactoe.datasource.model.GameDto;
 
 public class GameMapper {
     public GameDto toDto(Game game) {

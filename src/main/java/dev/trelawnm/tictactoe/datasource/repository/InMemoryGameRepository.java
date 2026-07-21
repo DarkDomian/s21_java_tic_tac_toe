@@ -1,11 +1,21 @@
 package dev.trelawnm.tictactoe.datasource.repository;
 
-import dev.trelawnm.tictactoe.datasource.model.GameDatasource;
+import java.util.UUID;
+
 import dev.trelawnm.tictactoe.datasource.mapper.GameMapper;
+import dev.trelawnm.tictactoe.datasource.model.GameDatasource;
+import dev.trelawnm.tictactoe.datasource.model.GameDto;
+import dev.trelawnm.tictactoe.domain.model.Game;
+import dev.trelawnm.tictactoe.domain.service.GameRepository;
 
 public class InMemoryGameRepository implements GameRepository {
     private final GameDatasource datasource;
     private final GameMapper mapper;
+
+    public InMemoryGameRepository(GameDatasource datasource, GameMapper mapper) {
+        this.datasource = datasource;
+        this.mapper = mapper;
+    }
 
     @Override
     public Game findById(UUID gameId) {
