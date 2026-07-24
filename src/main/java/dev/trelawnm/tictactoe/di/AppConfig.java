@@ -1,12 +1,13 @@
 package dev.trelawnm.tictactoe.di;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import dev.trelawnm.tictactoe.datasource.mapper.GameMapper;
 import dev.trelawnm.tictactoe.datasource.model.GameDatasource;
 import dev.trelawnm.tictactoe.datasource.repository.InMemoryGameRepository;
 import dev.trelawnm.tictactoe.domain.service.GameRepository;
 import dev.trelawnm.tictactoe.domain.service.GameService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {

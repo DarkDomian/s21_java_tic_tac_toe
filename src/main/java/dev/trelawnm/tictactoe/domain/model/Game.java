@@ -2,7 +2,7 @@ package dev.trelawnm.tictactoe.domain.model;
 
 import java.util.UUID;
 
-import dev.trelawnm.tictactoe.exceptions.IllegalMoveException;
+import dev.trelawnm.tictactoe.domain.exceptions.IllegalMoveException;
 
 /**
  * An Entity
@@ -12,10 +12,10 @@ public class Game { // Entity
     private Player currentPlayer;
     private final UUID uuid;
 
-    public Game(UUID id, Board board, Player cp) {
+    public Game(UUID id, Board board) {
         this.board = board;
         this.uuid = id;
-        this.currentPlayer = cp;
+        // this.currentPlayer = cp;
     }
 
     public Board getBoard() {
@@ -31,7 +31,7 @@ public class Game { // Entity
     }
 
     public UUID getId() {
-        return new UUID(uuid);
+        return uuid;
     }
 
     public Board makeMove(Move move) {

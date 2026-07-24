@@ -6,19 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import dev.trelawnm.tictactoe.domain.model.Board;
-import dev.trelawnm.tictactoe.domain.model.Game;
-import dev.trelawnm.tictactoe.web.model.GameWeb;
 
 @Component
 public class GameWebMapper {
-
-    public GameWeb toWeb(Game game) {
-        return new GameWeb(
-            game.getId(),
-            boardToList(game.getBoard().grid()),
-            game.getCurrentPlayer()
-        );
-    }
 
     public Board toBoard(List<List<Integer>> field) {
         int rows = field.size();

@@ -1,6 +1,6 @@
 package dev.trelawnm.tictactoe.domain.service;
 
-import java.util.UUID:
+import java.util.UUID;
 
 import dev.trelawnm.tictactoe.domain.model.Game;
 import dev.trelawnm.tictactoe.domain.model.Move;
@@ -16,17 +16,7 @@ public class GameService implements GameServiceInterface {
     }
 
     @Override
-    public Game getGame(UUID id) {
-        return storage.findById(id);
-    }
-
-    @Override
-    public void saveGame(Game game) {
-        storage.save(game);
-    }
-
-    @Override
-    public Game nextMove(Game game) {
+    public Game nextMove(Game game) throws IllegalMoveException{
         // TODO: return given game with updated board
         Move aiMove = MinimaxEngine.findBestMove(game.getBoard(), game.getCurrentPlayer());
         Board some = game.makeMove(aiMove);
@@ -35,14 +25,15 @@ public class GameService implements GameServiceInterface {
     }
 
     @Override
-    public boolean validateBoard(Board currBoard) {
-        // final GameBoard currBoard = game.getBoard();
+    public boolean validateBoard(Game givenGame) {
+        // TODO: try to find game, generate new game if possible
+        Game storedGame = getGame(givenGame.id());
         int numOfChanges = 0;
         int sumOnBoard = 0;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                final int prevCell = this.Board.getCell(i,j);
+                final int prevCell = storedGame.getBoard().getCell(i,j);
                 final int currCell = currBoard.getCell(i,j);
                 if (prevCell != 0 && prevCell != currCell)
                     return false;
@@ -66,7 +57,7 @@ public class GameService implements GameServiceInterface {
      */
     @Override
     public boolean gameEnded(Game game) {
-        if (game.getBoard().getWinner() || game.getBoard().isFull())
+        if (game.getBoard().getWinner() != null || game.getBoard().isFull())
             return true;
         else
             return false;

@@ -22,23 +22,23 @@ public record Board(int[][] grid) {
     public Player getWinner() {
         // Checking for Rows for X or O victory.
         for (int row = 0; row < 3; row++) {
-            if (grid[row][0] == grid[row][1] && grid[row][1] == grid[row][2]) {
+            if (grid[row][0] == grid[row][1] && grid[row][1] == grid[row][2] && grid[row][0] != 0) {
                 return Player.fromSymbol(grid[row][0]);
             }
         }
 
         // Checking for Columns for X or O victory.
         for (int col = 0; col < 3; col++) {
-            if (grid[0][col] == grid[1][col] && grid[1][col] == grid[2][col]) {
+            if (grid[0][col] == grid[1][col] && grid[1][col] == grid[2][col] && grid[0][col] != 0) {
                 return Player.fromSymbol(grid[0][col]);
             }
         }
 
         // Checking for Diagonals for X or O victory.
-        if (grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
+        if (grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2] && grid[1][1] != 0) {
             return Player.fromSymbol(grid[1][1]);
         }
-        if (grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0]) {
+        if (grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0] && grid[1][1] != 0) {
             return Player.fromSymbol(grid[1][1]);
         }
 
@@ -78,6 +78,8 @@ public record Board(int[][] grid) {
         int col = src[0].length;
 
         int[][] copy = new int[row][col];
+
+        // TODO: throw exception about unsupported demtions
 
         for (int r = 0; r < row; r++)
             for (int c = 0; c < col; c++ )
