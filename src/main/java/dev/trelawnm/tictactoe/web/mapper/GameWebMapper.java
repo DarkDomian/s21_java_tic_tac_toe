@@ -22,7 +22,7 @@ public class GameWebMapper {
         return new Board(grid);
     }
 
-    private List<List<Integer>> boardToList(int[][] grid) {
+    public List<List<Integer>> boardToList(int[][] grid) {
         List<List<Integer>> list = new ArrayList<>();
         for (int[] row : grid) {
             List<Integer> rowList = new ArrayList<>();
