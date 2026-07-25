@@ -1,5 +1,3 @@
 package dev.trelawnm.tictactoe.datasource.model;
 
-public class GameDTO {
-    
-}
+public record BoardEntity(int[][] board) {}

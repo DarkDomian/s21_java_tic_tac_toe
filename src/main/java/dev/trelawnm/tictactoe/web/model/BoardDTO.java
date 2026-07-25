@@ -1,5 +1,3 @@
 package dev.trelawnm.tictactoe.web.model;
 
-public class BoardDTO {
-    
-}
+public record BoardDTO(int[][] board) {}

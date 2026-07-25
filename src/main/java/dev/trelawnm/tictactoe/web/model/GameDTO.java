@@ -1,5 +1,5 @@
 package dev.trelawnm.tictactoe.web.model;
 
-public class GameDTO {
-    
-}
+import java.util.UUID;
+
+public record GameDTO(UUID uuid, BoardDTO board) {}
