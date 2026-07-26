@@ -41,7 +41,7 @@ public class GameServiceImpl implements GameService {
                 int curr = currGame.board().grid()[r][c];
 
                 if (prev != 0 && prev != curr) return false;
-                if (prev == 0 && Math.abs(curr) == 1) changes++;
+                if (prev == 0 && curr == 1) changes++;
             }
         }
 

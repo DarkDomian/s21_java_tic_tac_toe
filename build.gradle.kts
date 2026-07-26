@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.trelawnm"
-version = "0.0.1-SNAPSHOT"
+version = "0.9.0-STABLE"
 
 java {
 	toolchain {
